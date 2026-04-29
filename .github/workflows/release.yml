@@ -1,0 +1,45 @@
+name: build-and-release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restore and test
+        run: |
+          dotnet restore AKCleaner.sln
+          dotnet test AKCleaner.sln --configuration Release --no-restore
+
+      - name: Publish Agent
+        run: dotnet publish src/AKCleaner.Agent/AKCleaner.Agent.csproj -c Release -r win-x64 --self-contained true -o artifacts/agent
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build desktop package
+        working-directory: desktop-ui
+        run: |
+          npm ci
+          npm run build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: akcleaner-release
+          path: |
+            artifacts/**
+            desktop-ui/**

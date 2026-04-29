@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AKCleaner Desktop</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <h1>AKCleaner</h1>
+      <button data-page="home">Home</button>
+      <button data-page="quick">Quick Scan</button>
+      <button data-page="advanced">Advanced Scan</button>
+      <button data-page="settings">Settings</button>
+      <button data-page="history">History</button>
+    </aside>
+    <main class="content">
+      <section id="home" class="page active">
+        <h2>Dashboard</h2>
+        <p>Temp ve cache alanlarinizi tek tikla temizleyin.</p>
+      </section>
+      <section id="quick" class="page">
+        <h2>Quick Scan</h2>
+        <button id="scanBtn">Scan Baslat</button>
+        <button id="cleanBtn">Secilenleri Temizle</button>
+        <pre id="output"></pre>
+      </section>
+      <section id="advanced" class="page"><h2>Advanced Scan</h2><p>Kategori bazli secim yakinda.</p></section>
+      <section id="settings" class="page">
+        <h2>Settings</h2>
+        <label><input id="recycleBin" type="checkbox" checked /> Recycle Bin kullan</label>
+      </section>
+      <section id="history" class="page"><h2>History</h2><p>Gecmis temizlik raporlari burada listelenir.</p></section>
+    </main>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
