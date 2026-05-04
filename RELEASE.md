@@ -2,13 +2,12 @@
 
 ## Build
 - `dotnet restore AKCleaner.sln`
-- `dotnet test AKCleaner.sln`
-- `dotnet publish src/AKCleaner.Agent/AKCleaner.Agent.csproj -c Release -r win-x64 --self-contained true`
-- `cd desktop-ui && npm ci && npm run build`
+- `dotnet build AKCleaner.sln`
+- `dotnet publish ConsoleApp2/ConsoleApp2.csproj -c Release -r win-x64 --self-contained true -o artifacts/app`
 
 ## Signing
 - Configure `WIN_CSC_LINK` and `WIN_CSC_KEY_PASSWORD` secrets in CI.
-- Sign both agent binary and installer artifacts.
+- Sign published binaries and installer artifacts.
 
 ## Distribution
 - Stable releases use Git tags `vX.Y.Z`.

@@ -1,0 +1,54 @@
+<Window x:Class="ConsoleApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AKCleaner"
+        Height="480"
+        Width="640"
+        MinHeight="360"
+        MinWidth="480"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Text="Merhabalar AKCleanere Hoş Geldiniz!"
+                   FontSize="16"
+                   FontWeight="SemiBold"
+                   Margin="0,0,0,10"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button x:Name="BtnTemizlik"
+                    Content="Temizlik"
+                    Width="120"
+                    Height="32"
+                    Margin="0,0,8,0"
+                    Click="Temizlik_Click"/>
+            <Button Content="Çıkış"
+                    Width="120"
+                    Height="32"
+                    Click="Cikis_Click"/>
+        </StackPanel>
+
+        <GroupBox Grid.Row="2" Header="Günlük" Padding="6">
+            <TextBox x:Name="LogText"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"
+                     HorizontalScrollBarVisibility="Auto"
+                     FontFamily="Consolas"
+                     FontSize="12"/>
+        </GroupBox>
+
+        <TextBlock Grid.Row="3"
+                   x:Name="StatusText"
+                   Margin="0,10,0,0"
+                   Foreground="#444"
+                   Text="Hazır"/>
+    </Grid>
+</Window>

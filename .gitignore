@@ -5,10 +5,6 @@ obj/
 .vs/
 .dotnet/
 packages/
-desktop-ui/node_modules/
-desktop-ui/dist/
-desktop-ui/.node/
 artifacts/
-desktop-ui/.node/
 *.user
 *.suo

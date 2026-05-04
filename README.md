@@ -1,24 +1,10 @@
 # AKCleaner (Windows v1)
 
-AKCleaner is a Windows cleaner product built with an Electron desktop UI and a C# cleanup engine.
+Windows temizlik aracı: tek **WPF** masaüstü uygulaması (`ConsoleApp2`).
 
-## Project Structure
-- `src/AKCleaner.Core`: scan/delete engine, safety rules, audit logging.
-- `src/AKCleaner.Agent`: IPC bridge between Electron and cleaner core.
-- `desktop-ui`: Electron application (`home`, `quick scan`, `advanced`, `settings`, `history`).
-- `tests/AKCleaner.Core.Tests`: unit tests for core behavior.
+## Geliştirme
+- `dotnet build AKCleaner.sln`
+- Windows’ta arayüz: `dotnet run --project ConsoleApp2/ConsoleApp2.csproj`
 
-## Local Development
-1. Build backend:
-   - `dotnet build AKCleaner.sln`
-2. Run tests:
-   - `dotnet test AKCleaner.sln`
-3. Start desktop UI:
-   - `cd desktop-ui`
-   - `./dev.sh`
-
-## Safety Features
-- Scan and cleanup are separate operations.
-- Optional recycle bin deletion mode.
-- Protected system path guard + include/exclude path filters.
-- Action audit logs under `%LOCALAPPDATA%\\AKCleaner\\logs`.
+## Yayın
+- Ayrıntılar: `RELEASE.md` ve `build-windows.ps1`.
