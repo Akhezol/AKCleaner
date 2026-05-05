@@ -1,0 +1,13 @@
+bin/
+obj/
+**/bin/
+**/obj/
+.vs/
+.dotnet/
+packages/
+artifacts/
+node_modules/
+*.user
+*.suo
+Thumbs.db
+Desktop.ini

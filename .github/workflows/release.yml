@@ -1,0 +1,32 @@
+name: build-and-release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restore and build
+        run: |
+          dotnet restore AKCleaner.sln
+          dotnet build AKCleaner.sln --configuration Release --no-restore
+
+      - name: Publish WPF app
+        run: dotnet publish ConsoleApp2/ConsoleApp2.csproj -c Release -r win-x64 --self-contained true -o artifacts/app
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: akcleaner-release
+          path: artifacts/**

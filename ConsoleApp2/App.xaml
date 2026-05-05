@@ -1,0 +1,120 @@
+<Application x:Class="ConsoleApp2.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- Koyu / maskülen palet -->
+        <SolidColorBrush x:Key="Brush.WindowBg" Color="#070708"/>
+        <SolidColorBrush x:Key="Brush.Surface" Color="#111113"/>
+        <SolidColorBrush x:Key="Brush.SurfaceRaised" Color="#18181B"/>
+        <SolidColorBrush x:Key="Brush.LogInner" Color="#0C0C0E"/>
+        <SolidColorBrush x:Key="Brush.Border" Color="#2A2A2E"/>
+        <SolidColorBrush x:Key="Brush.BorderStrong" Color="#3F3F46"/>
+        <SolidColorBrush x:Key="Brush.TextPrimary" Color="#F4F4F5"/>
+        <SolidColorBrush x:Key="Brush.TextSecondary" Color="#A1A1AA"/>
+        <SolidColorBrush x:Key="Brush.TextMuted" Color="#71717A"/>
+        <!-- Çelik / taş vurgu -->
+        <SolidColorBrush x:Key="Brush.Accent" Color="#A8A29E"/>
+        <SolidColorBrush x:Key="Brush.AccentDeep" Color="#57534E"/>
+        <!-- Birincil düğme: açık metal -->
+        <SolidColorBrush x:Key="Brush.Cta" Color="#D4D4D8"/>
+        <SolidColorBrush x:Key="Brush.CtaHover" Color="#E4E4E7"/>
+        <SolidColorBrush x:Key="Brush.CtaPressed" Color="#BFBFC4"/>
+        <SolidColorBrush x:Key="Brush.CtaText" Color="#09090B"/>
+        <SolidColorBrush x:Key="Brush.Danger" Color="#B91C1C"/>
+        <SolidColorBrush x:Key="Brush.StatusBar" Color="#0D0D10"/>
+
+        <Style x:Key="Text.Headline" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="{StaticResource Brush.TextPrimary}"/>
+        </Style>
+        <Style x:Key="Text.Body" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="{StaticResource Brush.TextSecondary}"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <Style x:Key="Text.Caption" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{StaticResource Brush.TextMuted}"/>
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="{StaticResource Brush.CtaText}"/>
+            <Setter Property="Background" Value="{StaticResource Brush.Cta}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="22,12"/>
+            <Setter Property="MinWidth" Value="148"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="6"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.CtaHover}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.CtaPressed}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Bd" Property="Background" Value="#27272A"/>
+                                <Setter Property="Foreground" Value="#52525B"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SecondaryButton" TargetType="Button">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{StaticResource Brush.TextPrimary}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Brush.BorderStrong}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="22,12"/>
+            <Setter Property="MinWidth" Value="148"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#1F1F23"/>
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="#52525B"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#18181B"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,150 @@
+<Window x:Class="ConsoleApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AKCleaner"
+        Height="560"
+        Width="720"
+        MinHeight="420"
+        MinWidth="520"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource Brush.WindowBg}"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Background="{StaticResource Brush.Surface}"
+                BorderBrush="{StaticResource Brush.Border}"
+                BorderThickness="0,0,0,1"
+                Padding="28,24,28,20">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Border Width="5"
+                            Height="32"
+                            CornerRadius="1"
+                            Background="{StaticResource Brush.AccentDeep}"
+                            Margin="0,0,16,0"
+                            VerticalAlignment="Top">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="8"
+                                              ShadowDepth="0"
+                                              Opacity="0.35"
+                                              Color="#A8A29E"/>
+                        </Border.Effect>
+                    </Border>
+                    <StackPanel>
+                        <TextBlock Text="AKCleaner"
+                                   Style="{StaticResource Text.Headline}"/>
+                        <TextBlock Style="{StaticResource Text.Body}"
+                                   Margin="0,10,0,0"
+                                   MaxWidth="640"
+                                   Opacity="0.92"
+                                   Text="Geçici dosyaları ve son kullanılan öğeleri güvenle temizleyin."/>
+                        <TextBlock FontFamily="Segoe UI"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Foreground="{StaticResource Brush.Accent}"
+                                   Margin="0,10,0,0"
+                                   MaxWidth="640"
+                                   TextWrapping="Wrap"
+                                   Text="Yönetici hakları gerekir: Uygulama doğrudan yükseltilmiş oturumda açılır. Çalıştırdığınızda Windows güvenlik (UAC) penceresi gelir; onay vermezseniz AKCleaner başlamaz."/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="21,20,0,0">
+                    <Button x:Name="BtnTemizlik"
+                            Content="Temizliği başlat"
+                            Style="{StaticResource PrimaryButton}"
+                            Margin="0,0,10,0"
+                            Click="Temizlik_Click"/>
+                    <Button Content="Çıkış"
+                            Style="{StaticResource SecondaryButton}"
+                            Click="Cikis_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="28,22,28,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="İşlem günlüğü"
+                       FontFamily="Segoe UI"
+                       FontSize="13"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource Brush.TextPrimary}"
+                       Margin="0,0,0,10"/>
+
+            <Border Grid.Row="1"
+                    Background="{StaticResource Brush.SurfaceRaised}"
+                    BorderBrush="{StaticResource Brush.Border}"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="1"
+                    Margin="0,0,0,20">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="24"
+                                      ShadowDepth="0"
+                                      Opacity="0.45"
+                                      Color="#000000"/>
+                </Border.Effect>
+                <TextBox x:Name="LogText"
+                         IsReadOnly="True"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         VerticalScrollBarVisibility="Auto"
+                         HorizontalScrollBarVisibility="Auto"
+                         BorderThickness="0"
+                         Background="{StaticResource Brush.LogInner}"
+                         FontFamily="Cascadia Mono, Consolas, Courier New"
+                         FontSize="12.5"
+                         Foreground="#D4D4D8"
+                         CaretBrush="{StaticResource Brush.Accent}"
+                         SelectionBrush="#3F3F46"
+                         Padding="14,12"/>
+            </Border>
+        </Grid>
+
+        <Border Grid.Row="2"
+                Background="{StaticResource Brush.StatusBar}"
+                BorderBrush="{StaticResource Brush.Border}"
+                BorderThickness="0,1,0,0"
+                Padding="28,14,28,14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="StatusText"
+                           Grid.Column="0"
+                           FontFamily="Segoe UI"
+                           FontSize="13"
+                           Foreground="{StaticResource Brush.TextSecondary}"
+                           VerticalAlignment="Center"
+                           TextWrapping="Wrap"
+                           Text="Yönetici oturumu — Hazır. Temizlik için üstteki düğmeyi kullanın."/>
+                <Border Grid.Column="1"
+                        Background="#141416"
+                        BorderBrush="{StaticResource Brush.Border}"
+                        BorderThickness="1"
+                        CornerRadius="4"
+                        Padding="10,6"
+                        Margin="14,0,0,0"
+                        VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource Text.Caption}"
+                               Foreground="{StaticResource Brush.TextMuted}"
+                               FontWeight="Bold"
+                               Text="YÖNETİCİ OTURUMU"/>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
